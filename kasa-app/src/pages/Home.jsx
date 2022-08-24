@@ -1,7 +1,8 @@
 import React from "react"
+import Slogan from "../components/Slogan"
 
 function Home() {
-  return <div>HOME</div>
+  return <Slogan />
 }
 
 export default Home

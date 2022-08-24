@@ -9,14 +9,14 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   height: auto;
-  margin-top: 40px;
+  margin: 40px 0;
   max-width: 1240px;
 `
 
 const KasaLogo = styled.img`
   width: 100%;
   max-width: 210px;
-  height: 80px;
+  height: 90px;
 `
 
 const Navigation = styled.nav`
