@@ -14,9 +14,9 @@ function About() {
     <>
       <AboutBackground src={picturebackground} />
       <Collapse label="Fiabilité" />
-      {/* <Collapse label="Respect" />
+      <Collapse label="Respect" />
       <Collapse label="Service" />
-      <Collapse label="Sécurité" /> */}
+      <Collapse label="Sécurité" />
     </>
   )
 }

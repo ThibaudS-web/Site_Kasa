@@ -30,12 +30,13 @@ const ArrowCollapse = styled.img`
 
 const Content = styled.div`
   width: calc(80% - (29px + 18px));
+  padding: 29px 27px 19px 18px;
   margin-bottom: 20px;
+  margin-top: -20px;
   height: auto;
   background-color: ${colors.backgroundLight};
   color: ${colors.primary};
   line-height: 34px;
-  padding: 29px 27px 19px 18px;
   font-weight: 400;
   font-size: 24px;
 `
@@ -46,15 +47,16 @@ function Collapse({ label }) {
   return (
     <>
       <ActionWrapper
-        onClick={() => {
-          updateIsOpen(true)
-        }}
-        style={{ marginBottom: isOpen ? "-10px" : "20px" }}
+        onClick={() => (isOpen ? updateIsOpen(false) : updateIsOpen(true))}
       >
         <LabelCollapse>{label}</LabelCollapse>
-        <ArrowCollapse src={Arrow} alt="Cliquez pour dérouler" />
+        <ArrowCollapse
+          style={{ transform: isOpen ? "rotate(0)" : "rotate(180deg)" }}
+          src={Arrow}
+          alt="Cliquez pour dérouler"
+        />
       </ActionWrapper>
-      <Content>
+      <Content style={{ display: isOpen ? "block" : "none" }}>
         Les annonces postées sur Kasa garantissent une fiabilité totale. Les
         photos sont conformes aux logements, et toutes les informations sont
         régulièrement vérifiées par nos équipes.

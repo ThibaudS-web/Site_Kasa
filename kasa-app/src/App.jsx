@@ -28,6 +28,7 @@ const BlocPage = styled.div`
   margin: 0 100px;
   max-width: 1440px;
   padding: 20px;
+  min-height: 100vh;
 `
 
 function App() {

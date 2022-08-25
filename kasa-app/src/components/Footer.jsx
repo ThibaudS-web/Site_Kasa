@@ -8,9 +8,7 @@ const FooterWrapper = styled.div`
   background-color: #000;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
-  position: absolute;
-  bottom: 0;
+  margin-top: auto;
 `
 const AllRightPicture = styled.img`
   height: 115px;
