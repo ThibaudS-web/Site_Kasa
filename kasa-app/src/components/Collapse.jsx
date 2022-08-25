@@ -41,7 +41,7 @@ const Content = styled.div`
   font-size: 24px;
 `
 
-function Collapse({ label }) {
+function Collapse({ label, content }) {
   const [isOpen, updateIsOpen] = useState(false)
 
   return (
@@ -57,9 +57,7 @@ function Collapse({ label }) {
         />
       </ActionWrapper>
       <Content style={{ display: isOpen ? "block" : "none" }}>
-        Les annonces postées sur Kasa garantissent une fiabilité totale. Les
-        photos sont conformes aux logements, et toutes les informations sont
-        régulièrement vérifiées par nos équipes.
+        {content}
       </Content>
     </>
   )

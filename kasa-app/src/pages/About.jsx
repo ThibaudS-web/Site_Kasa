@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { SloganBG } from "../components/Slogan"
 import picturebackground from "../assets/about_background.png"
 import Collapse from "../components/Collapse"
+import staticTextAbout from "../utils/staticTextAbout"
 
 const AboutBackground = styled(SloganBG)`
   height: 225px;
@@ -13,10 +14,13 @@ function About() {
   return (
     <>
       <AboutBackground src={picturebackground} />
-      <Collapse label="Fiabilité" />
-      <Collapse label="Respect" />
-      <Collapse label="Service" />
-      <Collapse label="Sécurité" />
+      {staticTextAbout.map((collapse) => (
+        <Collapse
+          key={collapse.title}
+          label={collapse.title}
+          content={collapse.content}
+        />
+      ))}
     </>
   )
 }
