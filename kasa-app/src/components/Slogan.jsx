@@ -8,6 +8,7 @@ const SloganWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 43px;
 `
 
 const SloganBG = styled.img`

@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from "styled-components"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Header from "./components/Header"
+import fetchLocationData from "./utils/localFetch"
 
 const GlobalStyle = createGlobalStyle`
     div {
@@ -16,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
 const BlocPage = styled.div`
   margin: 40px 100px 0 100px;
 `
+
 function App() {
   return (
     <>
@@ -23,7 +25,7 @@ function App() {
       <BlocPage>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home location={fetchLocationData} />} />
           <Route path="/about" element={<About />} />
           <Route path="/apartment/:id" />
         </Routes>

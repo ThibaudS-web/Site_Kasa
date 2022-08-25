@@ -1,7 +1,8 @@
 const colors = {
   primary: "#FF6060",
   backgroundLight: "#F6F6F6",
-  gradient: "180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%",
+  profilDefault: "#C4C4C4",
+  emptyStar: "#E3E3E3",
 }
 
 export default colors
