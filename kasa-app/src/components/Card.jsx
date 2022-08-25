@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const CardWrapper = styled.div`
   max-width: 340px;
@@ -23,12 +24,14 @@ const CardLabel = styled.h2`
   font-size: 1.2rem;
 `
 
-function Card({ cover, title }) {
+function Card({ cover, title, id }) {
   return (
-    <CardWrapper>
-      <ImageCover src={cover} alt="Couverture" />
-      <CardLabel>{title}</CardLabel>
-    </CardWrapper>
+    <Link to={`/apartment/${id}`}>
+      <CardWrapper>
+        <ImageCover src={cover} alt="Couverture" />
+        <CardLabel>{title}</CardLabel>
+      </CardWrapper>
+    </Link>
   )
 }
 

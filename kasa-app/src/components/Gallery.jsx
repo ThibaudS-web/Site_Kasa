@@ -17,11 +17,15 @@ const GalleryBG = {
 }
 
 function Gallery({ locations }) {
-  console.log(locations.map((loc) => loc.id))
   return (
     <div style={GalleryBG}>
       {locations.map((loc) => (
-        <CardLocation key={loc.id} title={loc.title} cover={loc.cover} />
+        <CardLocation
+          key={loc.id}
+          id={loc.id}
+          title={loc.title}
+          cover={loc.cover}
+        />
       ))}
     </div>
   )
