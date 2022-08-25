@@ -10,7 +10,7 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   height: auto;
   margin: 40px 0;
-  max-width: 1240px;
+  width: 100%;
 `
 
 const KasaLogo = styled.img`

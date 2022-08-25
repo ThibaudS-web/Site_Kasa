@@ -22,6 +22,7 @@ const CardLabel = styled.h2`
   bottom: 20px;
   left: 20px;
   font-size: 1.2rem;
+  width: 80%;
 `
 
 function Card({ cover, title, id }) {

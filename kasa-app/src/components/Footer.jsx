@@ -9,10 +9,13 @@ const FooterWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  position: absolute;
+  bottom: 0;
 `
 const AllRightPicture = styled.img`
   height: 115px;
   align-self: center;
+  width: auto;
 `
 
 function Footer() {

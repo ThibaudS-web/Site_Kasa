@@ -8,18 +8,26 @@ import fetchLocationData from "./utils/localFetch"
 import Error from "./components/Error"
 import ProfileLocation from "./pages/ProfilLocation"
 import Footer from "./components/Footer"
+// import MontserratBold from "../font/Montserrat-Bold.ttf"
+// import MontserratRegular from "../font/Montserrat-Regular.ttf"
 
 const GlobalStyle = createGlobalStyle`
+    @font-face {
+      font-family: "Montserrat";
+      src: url("../public/font/Montserrat-Bold.ttf") format("truetype");
+      src:url("../public/font/Montserrat-Regular.ttf") format("truetype");
+    }
+
     div {
-      font-family: "Montserrat", "DM Sans", sans-serif;
+      font-family: "Montserrat", Arial;
       margin: 0;
       margin: auto;
     }
 `
 const BlocPage = styled.div`
-  margin: 40px 100px 0 100px;
+  margin: 0 100px;
   max-width: 1440px;
-  margin: auto;
+  padding: 20px;
 `
 
 function App() {

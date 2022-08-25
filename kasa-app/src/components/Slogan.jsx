@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import SloganBackground from "../assets/slogan_background.png"
+import sloganBackground from "../assets/slogan_background.png"
 
 const SloganWrapper = styled.div`
   max-width: 100%;
@@ -10,8 +10,8 @@ const SloganWrapper = styled.div`
   align-items: center;
   margin-bottom: 43px;
 `
-
-const SloganBG = styled.img`
+// Export here, we need it for About page
+export const SloganBG = styled.img`
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -29,7 +29,7 @@ function Slogan() {
   return (
     <SloganWrapper>
       <SloganBG
-        src={SloganBackground}
+        src={sloganBackground}
         alt="slogan, chez vous partout et ailleurs"
       />
       <SloganTitle>Chez vous, partout et ailleurs</SloganTitle>
