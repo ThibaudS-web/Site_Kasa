@@ -12,15 +12,14 @@ const CardWrapper = styled.div`
   ::after {
     content: "";
     position: absolute;
-    bottom: -30%;
+    bottom: -100%;
     width: 100%;
-    height: 30%;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    height: 100%;
+    border-radius: 0.5rem;
     background-color: #000000;
     opacity: 0;
     z-index: 0;
-    transition: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   &:hover::after {
     transform: translateY(-100%);
@@ -36,21 +35,21 @@ const ImageCover = styled.img`
 const CardLabel = styled.h2`
   color: white;
   position: absolute;
-  bottom: 20px;
+  top: 70%;
   left: 20px;
   font-size: 1.2rem;
-  width: 80%;
+  width: 85%;
   z-index: 1;
 `
 
 function Card({ cover, title, id }) {
   return (
-    <CardWrapper>
-      <Link to={`/apartment/${id}`}>
+    <Link to={`/apartment/${id}`}>
+      <CardWrapper>
         <ImageCover src={cover} alt="Couverture" />
         <CardLabel>{title}</CardLabel>
-      </Link>
-    </CardWrapper>
+      </CardWrapper>
+    </Link>
   )
 }
 

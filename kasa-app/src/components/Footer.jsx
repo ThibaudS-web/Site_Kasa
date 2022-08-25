@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import LogoFooter from "../assets/logo_footer.png"
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
   width: 100%;
   height: 210px;
   background-color: #000;

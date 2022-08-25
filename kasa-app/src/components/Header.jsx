@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import colors from "../utils/colors"
 import Logo from "../assets/logo.png"
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
