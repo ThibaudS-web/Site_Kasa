@@ -25,9 +25,9 @@ const GlobalStyle = createGlobalStyle`
     }
 `
 const BlocPage = styled.div`
-  margin: 0 100px;
+  margin: auto;
   max-width: 1440px;
-  padding: 20px;
+  padding: 20px 100px;
   min-height: 100vh;
 `
 
