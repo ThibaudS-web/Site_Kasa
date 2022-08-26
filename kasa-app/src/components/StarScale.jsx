@@ -25,21 +25,17 @@ function StarScale({ ratingValue, starType }) {
       <EmptyStar className="fa-solid fa-star" />
     )
 
-  return starType === "full" ? (
-    range.map((value) =>
-      ratingValue >= value ? (
-        <span key={value.toString()}>{scaleType}</span>
-      ) : null
-    )
-  ) : (
-    <span>
-      {range.map((value) =>
+  return starType === "full"
+    ? range.map((value) =>
+        ratingValue >= value ? (
+          <span key={value.toString()}>{scaleType}</span>
+        ) : null
+      )
+    : range.map((value) =>
         ratingValue < value ? (
           <span key={value.toString()}>{scaleType}</span>
         ) : null
-      )}
-    </span>
-  )
+      )
 }
 
 export default StarScale
