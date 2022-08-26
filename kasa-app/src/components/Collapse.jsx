@@ -44,7 +44,7 @@ const Content = styled.div`
   ${(props) =>
     props.pageType === "about"
       ? ` width: calc(80% - (29px + 18px));`
-      : ` width: calc(100% - (29px + 18px)); `}
+      : ` width: calc(100% - (29px + 18px)); list-style: none `}
 `
 
 function Collapse({ label, contentText, contentType, pageType }) {
