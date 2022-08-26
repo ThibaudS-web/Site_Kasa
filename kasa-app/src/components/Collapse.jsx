@@ -5,7 +5,6 @@ import colors from "../utils/colors"
 import Arrow from "../assets/arrow_collapse.png"
 
 const ActionWrapper = styled.div`
-  width: 80%;
   height: 50px;
   margin-bottom: 20px;
   color: white;
@@ -16,6 +15,8 @@ const ActionWrapper = styled.div`
   justify-content: space-between;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
+  ${(props) => (props.pageType === "about" ? ` width: 80%;` : `width: 100%;`)}
 `
 const LabelCollapse = styled.h2`
   font-weight: 500;
@@ -26,10 +27,10 @@ const ArrowCollapse = styled.img`
   width: 24px;
   height: 14px;
   margin-right: 18px;
+  transition: 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 `
 
 const Content = styled.div`
-  width: calc(80% - (29px + 18px));
   padding: 29px 27px 19px 18px;
   margin-bottom: 20px;
   margin-top: -20px;
@@ -39,14 +40,20 @@ const Content = styled.div`
   line-height: 34px;
   font-weight: 400;
   font-size: 24px;
+  transition: 1000ms;
+  ${(props) =>
+    props.pageType === "about"
+      ? ` width: calc(80% - (29px + 18px));`
+      : ` width: calc(100% - (29px + 18px)); `}
 `
 
-function Collapse({ label, content }) {
+function Collapse({ label, contentText, contentType, pageType }) {
   const [isOpen, updateIsOpen] = useState(false)
 
   return (
     <>
       <ActionWrapper
+        pageType={pageType}
         onClick={() => (isOpen ? updateIsOpen(false) : updateIsOpen(true))}
       >
         <LabelCollapse>{label}</LabelCollapse>
@@ -56,8 +63,19 @@ function Collapse({ label, content }) {
           alt="Cliquez pour dérouler"
         />
       </ActionWrapper>
-      <Content style={{ display: isOpen ? "block" : "none" }}>
-        {content}
+      <Content
+        pageType={pageType}
+        style={{
+          display: isOpen ? "block" : "none",
+          opacity: isOpen ? "1" : "0",
+        }}
+      >
+        {contentType === "paragraph"
+          ? contentText
+          : contentText.map((item, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={`${index}-${item}`}>{item}</li>
+            ))}
       </Content>
     </>
   )

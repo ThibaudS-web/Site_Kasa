@@ -10,8 +10,9 @@ const TagStyle = styled.div`
   color: white;
   font-size: 14px;
   border-radius: 10px;
-  padding: 0 37px;
+  padding: 5px 37px;
   display: flex;
+  margin: 0 10px 0 0;
 `
 
 function Tag({ label }) {

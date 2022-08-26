@@ -16,9 +16,11 @@ function About() {
       <AboutBackground src={picturebackground} />
       {staticTextAbout.map((collapse) => (
         <Collapse
+          pageType="about"
           key={collapse.title}
           label={collapse.title}
-          content={collapse.content}
+          contentType="paragraph"
+          contentText={collapse.content}
         />
       ))}
     </>
