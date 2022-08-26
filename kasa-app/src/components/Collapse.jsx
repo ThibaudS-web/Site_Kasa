@@ -34,11 +34,9 @@ const Content = styled.div`
   padding: 29px 27px 19px 18px;
   margin-bottom: 20px;
   margin-top: -20px;
-  height: auto;
   background-color: ${colors.backgroundLight};
   color: ${colors.primary};
   line-height: 34px;
-  font-weight: 400;
   font-size: 24px;
   transition: 1000ms;
   ${(props) =>

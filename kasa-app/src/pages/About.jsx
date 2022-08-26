@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from "react"
 import styled from "styled-components"
 import { SloganBG } from "../components/Slogan"
@@ -14,10 +15,10 @@ function About() {
   return (
     <>
       <AboutBackground src={picturebackground} />
-      {staticTextAbout.map((collapse) => (
+      {staticTextAbout.map((collapse, index) => (
         <Collapse
           pageType="about"
-          key={collapse.title}
+          key={`${collapse.title}-${index}`}
           label={collapse.title}
           contentType="paragraph"
           contentText={collapse.content}
