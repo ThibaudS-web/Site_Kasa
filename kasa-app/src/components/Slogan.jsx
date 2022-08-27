@@ -9,6 +9,10 @@ const SloganWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 43px;
+  @media (max-width: 480px) {
+    height: 110px;
+    border-radius: 10px;
+  }
 `
 // Export here, we need it for About page
 export const SloganBG = styled.img`
@@ -23,6 +27,19 @@ const SloganTitle = styled.h1`
   position: absolute;
   color: white;
   font-size: 48px;
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
+  @media (max-width: 480px) {
+    font-size: 24px;
+    width: 60%;
+    left: 10%;
+  }
+  @media (max-width: 350px) {
+    font-size: 24px;
+    width: 71%;
+    left: 10%;
+  }
 `
 
 function Slogan() {

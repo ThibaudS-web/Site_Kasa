@@ -9,6 +9,9 @@ import staticTextAbout from "../utils/staticTextAbout"
 const AboutBackground = styled(SloganBG)`
   height: 225px;
   margin-bottom: 20px;
+  @media (max-width: 480px) {
+    height: 110px;
+  }
 `
 
 function About() {

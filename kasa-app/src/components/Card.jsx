@@ -25,6 +25,10 @@ const CardWrapper = styled.div`
     transform: translateY(-100%);
     opacity: 0.6;
   }
+  @media (max-width: 480px) {
+    max-width: unset;
+    height: 225px;
+  }
 `
 const ImageCover = styled.img`
   width: 100%;
@@ -40,13 +44,16 @@ const CardLabel = styled.h2`
   font-size: 1.2rem;
   width: 85%;
   z-index: 1;
+  @media (max-width: 350px) {
+    font-size: 1rem;
+  }
 `
 
 function Card({ cover, title, id }) {
   return (
     <Link to={`/apartment/${id}`}>
       <CardWrapper>
-        <ImageCover src={cover} alt="Couverture" />
+        <ImageCover src={cover} alt={title} />
         <CardLabel>{title}</CardLabel>
       </CardWrapper>
     </Link>

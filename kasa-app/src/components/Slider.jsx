@@ -9,38 +9,54 @@ const SliderWrapper = styled.div`
   position: relative;
   display: flex;
   margin-bottom: 30px;
+  @media (max-width: 480px) {
+    height: 255px;
+    margin-bottom: 15px;
+  }
 `
-
 const CurrentPicture = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1.5rem;
 `
+const genericArrowCss = `
+    position: absolute;
+    width: 80px;
+    height: 46px;
+    cursor: pointer;
+    &:hover {
+      @media (min-width: 480px) {
+        width: calc(80px * 1.2);
+        height: calc(46px * 1.2);
+      }
+    }
+    @media (max-width: 480px) {
+      width: 30px;
+      height: 20px;
+    }
+`
 const LeftArrow = styled.img`
-  width: 80px;
-  height: 46px;
+  ${genericArrowCss}
   transform: rotate(270deg) translateY(-50%);
-  position: absolute;
   top: 50%;
   left: 25px;
-  cursor: pointer;
-  &:hover {
-    width: calc(80px * 1.2);
-    height: calc(46px * 1.2);
-  }
 `
 const RightArrow = styled.img`
-  width: 80px;
-  height: 46px;
+  ${genericArrowCss}
   transform: rotate(90deg) translateY(-50%);
-  position: absolute;
   top: 50%;
   right: 25px;
-  cursor: pointer;
-  &:hover {
-    width: calc(80px * 1.2);
-    height: calc(46px * 1.2);
+`
+const PictureCount = styled.div`
+  position: absolute;
+  color: white;
+  left: 50%;
+  bottom: 10%;
+  font-size: 24px;
+  text-shadow: 3px 5px 2px #474747;
+  @media (max-width: 480px) {
+    display: none;
   }
 `
 
@@ -65,6 +81,9 @@ function Slider({ pictures }) {
   return (
     <SliderWrapper>
       <CurrentPicture src={pictures[currentPictureIndex]} />
+      <PictureCount style={{}}>{`${currentPictureIndex + 1}/${
+        pictures.length
+      }`}</PictureCount>
       <LeftArrow
         style={{ display: pictures.length === 1 ? "none" : "block" }}
         onClick={() => {

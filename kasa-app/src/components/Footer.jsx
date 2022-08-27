@@ -9,11 +9,17 @@ const FooterWrapper = styled.footer`
   display: flex;
   justify-content: center;
   margin-top: auto;
+  @media (max-width: 480px) {
+    margin-top: 20px;
+  }
 `
 const AllRightPicture = styled.img`
   height: 115px;
   align-self: center;
   width: auto;
+  @media (max-width: 480px) {
+    height: 80px;
+  }
 `
 
 function Footer() {

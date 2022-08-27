@@ -17,10 +17,19 @@ const ActionWrapper = styled.div`
   position: relative;
   overflow: hidden;
   ${(props) => (props.pageType === "about" ? ` width: 80%;` : `width: 100%;`)}
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  @media (max-width: 480px) {
+    height: 30px;
+  }
 `
 const LabelCollapse = styled.h2`
   font-weight: 500;
   margin-left: 18px;
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `
 
 const ArrowCollapse = styled.img`
@@ -28,10 +37,14 @@ const ArrowCollapse = styled.img`
   height: 14px;
   margin-right: 18px;
   transition: 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 10px;
+  }
 `
 
 const Content = styled.div`
-  padding: 29px 27px 19px 18px;
+  padding: 29px 27px 19px 19px;
   margin-bottom: 20px;
   margin-top: -20px;
   background-color: ${colors.backgroundLight};
@@ -39,6 +52,13 @@ const Content = styled.div`
   line-height: 34px;
   font-size: 24px;
   transition: 1000ms;
+  @media (max-width: 768px) {
+    width: calc(100% - (29px + 18px));
+  }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 20px 20px 19px 19px;
+  }
   ${(props) =>
     props.pageType === "about"
       ? ` width: calc(80% - (29px + 18px));`

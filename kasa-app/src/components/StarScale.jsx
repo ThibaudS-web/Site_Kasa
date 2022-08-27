@@ -6,6 +6,12 @@ import colors from "../utils/colors"
 const genericStar = `
   color: ${colors.primary};
   font-size: 30px;
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `
 const EmptyStar = styled.i`
   ${genericStar}
