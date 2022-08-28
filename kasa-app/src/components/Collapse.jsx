@@ -29,7 +29,6 @@ const LabelCollapse = styled.h2`
     font-size: 16px;
   }
 `
-
 const ArrowCollapse = styled.img`
   width: 24px;
   height: 14px;
@@ -40,7 +39,6 @@ const ArrowCollapse = styled.img`
     height: 10px;
   }
 `
-
 const Content = styled.div`
   margin-bottom: 20px;
   background-color: ${colors.backgroundLight};
@@ -49,6 +47,7 @@ const Content = styled.div`
   font-size: 24px;
   overflow: hidden;
   transition: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
   @media (max-width: 768px) {
     width: calc(100% - (29px + 18px));
   }
