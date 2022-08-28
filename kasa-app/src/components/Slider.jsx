@@ -78,6 +78,7 @@ function Slider({ pictures }) {
       updateCurrentPicture(pictures.length - 1)
     }
   }
+
   return (
     <SliderWrapper>
       <CurrentPicture src={pictures[currentPictureIndex]} />

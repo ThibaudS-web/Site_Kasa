@@ -6,7 +6,6 @@ import Arrow from "../assets/arrow_collapse.png"
 
 const ActionWrapper = styled.div`
   height: 50px;
-  margin-bottom: 20px;
   color: white;
   background-color: ${colors.primary};
   border-radius: 5px;
@@ -15,7 +14,6 @@ const ActionWrapper = styled.div`
   justify-content: space-between;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
   ${(props) => (props.pageType === "about" ? ` width: 80%;` : `width: 100%;`)}
   @media (max-width: 768px) {
     width: 100%;
@@ -44,14 +42,13 @@ const ArrowCollapse = styled.img`
 `
 
 const Content = styled.div`
-  padding: 29px 27px 19px 19px;
   margin-bottom: 20px;
-  margin-top: -20px;
   background-color: ${colors.backgroundLight};
   color: ${colors.primary};
   line-height: 34px;
   font-size: 24px;
-  transition: 1000ms;
+  overflow: hidden;
+  transition: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   @media (max-width: 768px) {
     width: calc(100% - (29px + 18px));
   }
@@ -84,7 +81,8 @@ function Collapse({ label, contentText, contentType, pageType }) {
       <Content
         pageType={pageType}
         style={{
-          display: isOpen ? "block" : "none",
+          height: isOpen ? "auto" : "0",
+          padding: isOpen ? "29px 27px 19px 19px" : "0 27px 0 19px",
           opacity: isOpen ? "1" : "0",
         }}
       >

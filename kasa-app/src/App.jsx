@@ -24,6 +24,7 @@ const BlocPage = styled.div`
   max-width: 1440px;
   padding: 20px 100px;
   min-height: 100vh;
+
   @media (max-width: 768px) {
     padding: 20px 50px;
   }
