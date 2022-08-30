@@ -1,13 +1,16 @@
 import React from "react"
 import { Routes, Route } from "react-router-dom"
 import styled, { createGlobalStyle } from "styled-components"
+
 import Home from "./pages/Home"
 import About from "./pages/About"
-import Header from "./components/Header"
-import fetchLocationData from "./utils/localFetch"
-import Error from "./components/Error"
 import ProfileLocation from "./pages/ProfilLocation"
+
 import Footer from "./components/Footer"
+import Header from "./components/Header"
+import Error from "./components/Error"
+
+import fetchLocationData from "./services/localFetch"
 
 const GlobalStyle = createGlobalStyle`
     div, p {
@@ -34,19 +37,17 @@ const BlocPage = styled.div`
 `
 
 function App() {
+  const allLocationsData = fetchLocationData.getAll()
   return (
     <>
       <GlobalStyle />
       <BlocPage>
         <Header />
         <Routes>
-          <Route path="/" element={<Home locations={fetchLocationData} />} />
+          <Route path="/" element={<Home locations={allLocationsData} />} />
           <Route path="/about" element={<About />} />
-          <Route
-            path="/apartment/:locId"
-            element={<ProfileLocation locations={fetchLocationData} />}
-          />
-          <Route path="*" element={<Error />} />
+          <Route path="/apartment/:locId" element={<ProfileLocation />} />
+          <Route exact strict path="*" element={<Error />} />
         </Routes>
       </BlocPage>
       <Footer />

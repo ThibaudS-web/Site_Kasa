@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import colors from "../utils/colors"
@@ -7,6 +7,9 @@ import Tag from "../components/Tag"
 import Slider from "../components/Slider"
 import StarScale from "../components/StarScale"
 import Collapse from "../components/Collapse"
+import fetchLocationData from "../services/localFetch"
+import Loader from "../components/Loader"
+import Error from "../components/Error"
 
 const p = `
   color: ${colors.primary};
@@ -137,60 +140,97 @@ const CollapseWrapper = styled.div`
   }
 `
 
-function ProfileLocation({ locations }) {
+function ProfileLocation() {
   const { locId } = useParams()
-  const allLocations = locations.get()
-  const locationProfil = allLocations.filter((loc) => loc.id === locId)[0]
-  const rating = parseInt(locationProfil.rating)
+  const [locationData, setLocationData] = useState({})
+  const [isDataLoading, setDataLoading] = useState(false)
+  const [errorAPI, setErrorAPI] = useState(false)
+  const [error404, setError404] = useState(false)
+  const rating = parseInt(locationData.rating)
+
+  useEffect(() => {
+    async function fetchLocation() {
+      try {
+        await fetchLocationData
+          .getLocById(locId)
+          .then((data) => (data ? setLocationData(data) : setError404(true)))
+      } catch (err) {
+        console.log(err)
+        setErrorAPI(true)
+      } finally {
+        setDataLoading(true)
+      }
+    }
+    fetchLocation()
+  }, [])
+
+  if (errorAPI) {
+    return (
+      <span>
+        Oups une erreur est survenue ... Veuillez recommencer ultérieurement.
+      </span>
+    )
+  }
+
+  if (error404) {
+    return <Error />
+  }
+
   return (
-    <>
-      <Slider pictures={locationProfil.pictures} />
-      <ResponsiveWrapper>
-        <FirstSectionWrapper>
-          <Title>{locationProfil.title}</Title>
-          <Geolocation>{locationProfil.location}</Geolocation>
-          <TagsWrapper>
-            {locationProfil.tags.map((tag, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Tag key={`${tag}-${index}`} label={tag} />
-            ))}
-          </TagsWrapper>
-        </FirstSectionWrapper>
+    <div>
+      {isDataLoading ? (
+        <>
+          <Slider pictures={locationData.pictures} />
+          <ResponsiveWrapper>
+            <FirstSectionWrapper>
+              <Title>{locationData.title}</Title>
+              <Geolocation>{locationData.location}</Geolocation>
+              <TagsWrapper>
+                {locationData.tags.map((tag, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Tag key={`${tag}-${index}`} label={tag} />
+                ))}
+              </TagsWrapper>
+            </FirstSectionWrapper>
 
-        <SecondSectionWrapper>
-          <OwnerWrapper>
-            <HomeOwnerName>{locationProfil.host.name}</HomeOwnerName>
-            <HomeOwerPicture
-              src={locationProfil.host.picture}
-              alt={locationProfil.host.name}
-            />
-          </OwnerWrapper>
-          <StarsWrapper>
-            <StarScale ratingValue={rating} starType="full" />
-            <StarScale ratingValue={rating} starType="empty" />
-          </StarsWrapper>
-        </SecondSectionWrapper>
-      </ResponsiveWrapper>
+            <SecondSectionWrapper>
+              <OwnerWrapper>
+                <HomeOwnerName>{locationData.host.name}</HomeOwnerName>
+                <HomeOwerPicture
+                  src={locationData.host.picture}
+                  alt={locationData.host.name}
+                />
+              </OwnerWrapper>
+              <StarsWrapper>
+                <StarScale ratingValue={rating} starType="full" />
+                <StarScale ratingValue={rating} starType="empty" />
+              </StarsWrapper>
+            </SecondSectionWrapper>
+          </ResponsiveWrapper>
 
-      <CollapseSectionWrapper>
-        <CollapseWrapper>
-          <Collapse
-            pageType="profil"
-            label="Description"
-            contentType="paragraph"
-            contentText={locationProfil.description}
-          />
-        </CollapseWrapper>
-        <CollapseWrapper>
-          <Collapse
-            pageType="profil"
-            label="Équipements"
-            contentType="list"
-            contentText={locationProfil.equipments}
-          />
-        </CollapseWrapper>
-      </CollapseSectionWrapper>
-    </>
+          <CollapseSectionWrapper>
+            <CollapseWrapper>
+              <Collapse
+                pageType="profil"
+                label="Description"
+                contentType="paragraph"
+                contentText={locationData.description}
+              />
+            </CollapseWrapper>
+            <CollapseWrapper>
+              <Collapse
+                pageType="profil"
+                label="Équipements"
+                contentType="list"
+                contentText={locationData.equipments}
+              />
+            </CollapseWrapper>
+          </CollapseSectionWrapper>
+        </>
+      ) : (
+        <Loader />
+      )}
+    </div>
   )
 }
 

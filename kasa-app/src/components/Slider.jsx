@@ -56,14 +56,14 @@ const genericArrowCss = `
 `
 const LeftArrow = styled.img`
   ${genericArrowCss}
-  filter: drop-shadow(-5px -2px 5px #222);
+  filter: drop-shadow(-0px -0px 3px #222);
   transform: rotate(270deg) translateY(-50%);
   top: 50%;
   left: 25px;
 `
 const RightArrow = styled.img`
   ${genericArrowCss}
-  filter: drop-shadow(5px 2px 5px #222);
+  filter: drop-shadow(0px 0px 3px #222);
   transform: rotate(90deg) translateY(-50%);
   top: 50%;
   right: 25px;
@@ -73,8 +73,7 @@ const PictureCount = styled.div`
   color: white;
   left: 50%;
   bottom: 4%;
-  font-size: 24px;
-  text-shadow: 3px 5px 2px #474747;
+  font-size: 20px;
   z-index: 1;
   @media (max-width: 480px) {
     display: none;
@@ -103,7 +102,7 @@ function Slider({ pictures }) {
   return (
     <SliderWrapper>
       <CurrentPicture src={pictures[currentPictureIndex]} />
-      <PictureCount style={{}}>{`${currentPictureIndex + 1}/${
+      <PictureCount>{`${currentPictureIndex + 1}/${
         pictures.length
       }`}</PictureCount>
       <LeftArrow
