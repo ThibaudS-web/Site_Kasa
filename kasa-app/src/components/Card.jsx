@@ -25,6 +25,7 @@ const CardWrapper = styled.div`
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   animation-fill-mode: forwards;
   opacity: 0;
+  ${(props) => `animation-delay: calc(${props.countAnimation} * 0.15s)`};
   ::after {
     content: "";
     position: absolute;
@@ -68,11 +69,7 @@ const CardLabel = styled.h2`
 function Card(props) {
   return (
     <Link to={`/apartment/${props.id}`}>
-      <CardWrapper
-        style={{
-          animationDelay: `calc(${props.countAnimation} * 0.15s)`,
-        }}
-      >
+      <CardWrapper countAnimation={props.countAnimation}>
         <ImageCover src={props.cover} alt={props.title} />
         <CardLabel>{props.title}</CardLabel>
       </CardWrapper>
