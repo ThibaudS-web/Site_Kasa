@@ -1,14 +1,30 @@
 /* eslint-disable react/prop-types */
 import React from "react"
-import styled from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { Link } from "react-router-dom"
 
+const cardAnimation = keyframes`
+    0% {
+      transform: translateY(-40px);
+      opacity: 0;
+      
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+`
 const CardWrapper = styled.div`
   max-width: 340px;
   height: 340px;
   display: flex;
   overflow: hidden;
   position: relative;
+  animation-name: ${cardAnimation};
+  animation-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+  opacity: 0;
   ::after {
     content: "";
     position: absolute;
@@ -49,12 +65,16 @@ const CardLabel = styled.h2`
   }
 `
 
-function Card({ cover, title, id }) {
+function Card(props) {
   return (
-    <Link to={`/apartment/${id}`}>
-      <CardWrapper>
-        <ImageCover src={cover} alt={title} />
-        <CardLabel>{title}</CardLabel>
+    <Link to={`/apartment/${props.id}`}>
+      <CardWrapper
+        style={{
+          animationDelay: `calc(${props.countAnimation} * 0.15s)`,
+        }}
+      >
+        <ImageCover src={props.cover} alt={props.title} />
+        <CardLabel>{props.title}</CardLabel>
       </CardWrapper>
     </Link>
   )

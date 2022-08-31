@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react"
 import styled from "styled-components"
-import Arrow from "../assets/arrow_collapse.png"
+import Arrow from "./ui/Arrow"
 
 const SliderWrapper = styled.div`
   width: 100%;
@@ -41,32 +41,37 @@ const CurrentPicture = styled.img`
 const genericArrowCss = `
     position: absolute;
     width: 80px;
-    height: 46px;
+    height: 80px;
     cursor: pointer;
-    &:hover {
-      @media (min-width: 769px) {
-        width: calc(80px * 1.2);
-        height: calc(46px * 1.2);
-      }
-    }
+    transition: all 0.2s ease-in-out;
     @media (max-width: 768px) {
-      width: 30px;
+      width: 40px;
+      height: 40px;
+    }
+    @media (max-width: 480px) {
+      width: 20px;
       height: 20px;
     }
 `
-const LeftArrow = styled.img`
+const LeftArrow = styled(Arrow)`
   ${genericArrowCss}
-  filter: drop-shadow(-0px -0px 3px #222);
-  transform: rotate(270deg) translateY(-50%);
+  filter: drop-shadow(-2px -2px 3px #222);
+  transform: rotate(180deg);
   top: 50%;
   left: 25px;
+  &:hover {
+    transform: rotate(180deg) scale(1.1);
+  }
 `
-const RightArrow = styled.img`
+const RightArrow = styled(Arrow)`
   ${genericArrowCss}
-  filter: drop-shadow(0px 0px 3px #222);
-  transform: rotate(90deg) translateY(-50%);
+  filter: drop-shadow(2px 2px 3px #222);
+  transform: rotate(0deg);
   top: 50%;
   right: 25px;
+  &:hover {
+    transform: rotate(0deg) scale(1.1);
+  }
 `
 const PictureCount = styled.div`
   position: absolute;
@@ -110,14 +115,13 @@ function Slider({ pictures }) {
         onClick={() => {
           handleLeftArrow()
         }}
-        src={Arrow}
       />
       <RightArrow
+        value=""
         style={{ display: pictures.length === 1 ? "none" : "block" }}
         onClick={() => {
           handleRightArrow()
         }}
-        src={Arrow}
       />
     </SliderWrapper>
   )

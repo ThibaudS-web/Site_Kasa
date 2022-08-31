@@ -47,7 +47,7 @@ function App() {
           <Route path="/" element={<Home locations={allLocationsData} />} />
           <Route path="/about" element={<About />} />
           <Route path="/apartment/:locId" element={<ProfileLocation />} />
-          <Route exact strict path="*" element={<Error />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BlocPage>
       <Footer />

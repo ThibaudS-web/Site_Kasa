@@ -147,7 +147,7 @@ function ProfileLocation() {
   const [errorAPI, setErrorAPI] = useState(false)
   const [error404, setError404] = useState(false)
   const rating = parseInt(locationData.rating)
-
+  //useContext 
   useEffect(() => {
     async function fetchLocation() {
       try {

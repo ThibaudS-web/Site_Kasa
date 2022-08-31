@@ -29,8 +29,9 @@ const GalleryBG = styled.div`
 function Gallery({ locations }) {
   return (
     <GalleryBG>
-      {locations.map((loc) => (
+      {locations.map((loc, index) => (
         <CardLocation
+          countAnimation={index + 1}
           key={loc.id}
           id={loc.id}
           title={loc.title}
