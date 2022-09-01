@@ -1,30 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import Gallery from "../components/Gallery"
 import Slogan from "../components/Slogan"
 import Loader from "../components/Loader"
+import { FetchDataContext } from "../utils/context/FetchDataProvider"
 
-function Home({ locations }) {
-  const [error, setError] = useState(false)
-  const [isDataLoading, setDataLoading] = useState(false)
-  const [locationsData, setLocationsData] = useState([])
+function Home() {
+  const { fetchAllLocations, errorAPI, allLocationLoading, locationsData } =
+    useContext(FetchDataContext)
 
   useEffect(() => {
-    async function fetchLocations() {
-      try {
-        const result = await locations
-        setLocationsData(result)
-      } catch (err) {
-        console.log(err)
-        setError(true)
-      } finally {
-        setDataLoading(true)
-      }
-    }
-    fetchLocations()
+    fetchAllLocations()
   }, [])
 
-  if (error) {
+  if (errorAPI) {
     return (
       <span>
         Oups une erreur est survenue ... Veuillez recommencer ultérieurement.
@@ -35,7 +24,7 @@ function Home({ locations }) {
   return (
     <>
       <Slogan />
-      {isDataLoading ? <Gallery locations={locationsData} /> : <Loader />}
+      {allLocationLoading ? <Gallery locations={locationsData} /> : <Loader />}
     </>
   )
 }

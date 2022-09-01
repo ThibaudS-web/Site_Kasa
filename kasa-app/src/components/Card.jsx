@@ -66,12 +66,12 @@ const CardLabel = styled.h2`
   }
 `
 
-function Card(props) {
+function Card({ id, cover, title, countAnimation }) {
   return (
-    <Link to={`/apartment/${props.id}`}>
-      <CardWrapper countAnimation={props.countAnimation}>
-        <ImageCover src={props.cover} alt={props.title} />
-        <CardLabel>{props.title}</CardLabel>
+    <Link to={`/apartment/${id}`}>
+      <CardWrapper countAnimation={countAnimation}>
+        <ImageCover src={cover} alt={title} />
+        <CardLabel>{title}</CardLabel>
       </CardWrapper>
     </Link>
   )

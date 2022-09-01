@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import styled from "styled-components"
-import { useParams } from "react-router-dom"
+import { useParams, Navigate } from "react-router-dom"
 import colors from "../utils/colors"
 import Tag from "../components/Tag"
 import Slider from "../components/Slider"
 import StarScale from "../components/StarScale"
 import Collapse from "../components/Collapse"
-import fetchLocationData from "../services/localFetch"
 import Loader from "../components/Loader"
-import Error from "../components/Error"
+import { FetchDataContext } from "../utils/context/FetchDataProvider"
 
 const p = `
   color: ${colors.primary};
@@ -142,27 +141,22 @@ const CollapseWrapper = styled.div`
 
 function ProfileLocation() {
   const { locId } = useParams()
-  const [locationData, setLocationData] = useState({})
-  const [isDataLoading, setDataLoading] = useState(false)
-  const [errorAPI, setErrorAPI] = useState(false)
-  const [error404, setError404] = useState(false)
-  const rating = parseInt(locationData.rating)
-  //useContext 
+  const {
+    errorAPI,
+    error404,
+    locationData,
+    isLocationLoading,
+    fetchLocationById,
+  } = useContext(FetchDataContext)
+
+  console.log(locId)
+
   useEffect(() => {
-    async function fetchLocation() {
-      try {
-        await fetchLocationData
-          .getLocById(locId)
-          .then((data) => (data ? setLocationData(data) : setError404(true)))
-      } catch (err) {
-        console.log(err)
-        setErrorAPI(true)
-      } finally {
-        setDataLoading(true)
-      }
-    }
-    fetchLocation()
-  }, [])
+    console.log("je passe dans le useEffect")
+    fetchLocationById(locId)
+  }, [locId])
+  
+  console.log(locationData)
 
   if (errorAPI) {
     return (
@@ -172,13 +166,17 @@ function ProfileLocation() {
     )
   }
 
-  if (error404) {
-    return <Error />
+  console.log("Error404 : ", error404)
+
+  if (error404 && Object.keys(locationData).length === 0) {
+    return <Navigate to="/error404" />
   }
+
+  const rating = parseInt(locationData.rating)
 
   return (
     <div>
-      {isDataLoading ? (
+      {isLocationLoading ? (
         <>
           <Slider pictures={locationData.pictures} />
           <ResponsiveWrapper>

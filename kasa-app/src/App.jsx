@@ -10,7 +10,9 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Error from "./components/Error"
 
-import fetchLocationData from "./services/localFetch"
+import { FetchDataProvider } from "./utils/context/FetchDataProvider"
+
+// import fetchLocationData from "./services/localFetch"
 
 const GlobalStyle = createGlobalStyle`
     div, p {
@@ -37,18 +39,19 @@ const BlocPage = styled.div`
 `
 
 function App() {
-  const allLocationsData = fetchLocationData.getAll()
   return (
     <>
       <GlobalStyle />
       <BlocPage>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home locations={allLocationsData} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/apartment/:locId" element={<ProfileLocation />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
+        <FetchDataProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/apartment/:locId" element={<ProfileLocation />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </FetchDataProvider>
       </BlocPage>
       <Footer />
     </>
