@@ -150,7 +150,6 @@ function ProfileLocation() {
   }, [locId])
 
   const rating = parseInt(locationData.rating)
-  console.log(locationData)
 
   return (
     <div>

@@ -6,33 +6,30 @@ export const FetchDataContext = createContext()
 
 export const FetchDataProvider = ({ children }) => {
   const navigate = useNavigate()
-  
+
   const [locationData, setLocationData] = useState({})
-  const [locationsData, setLocationsData] = useState([])
+  const [allLocationsData, setLocationsData] = useState([])
   const [allLocationLoading, setAllLocationLoading] = useState(false)
   const [isLocationLoading, setIsLocationLoading] = useState(false)
-  const [error404, setError404] = useState(false)
 
   async function fetchLocationById(locId) {
     try {
-      setError404(false)
       const response = await fetchLocationData.getLocById(locId)
       if (response) {
         setLocationData(response)
       } else {
-        setIsLocationLoading(false)
         navigate("/error404", { replace: true })
       }
     } catch (err) {
       navigate("/api-error", { replace: true })
     } finally {
+      console.log("Finally")
       setIsLocationLoading(true)
-      console.log("response in provider : ", locationData)
     }
   }
 
   async function fetchAllLocations() {
-    // setIsLocationLoading(false)
+    setIsLocationLoading(false)
     try {
       const response = await fetchLocationData.getAll()
       if (response) {
@@ -41,6 +38,7 @@ export const FetchDataProvider = ({ children }) => {
         navigate("/error404", { replace: true })
       }
     } catch (err) {
+      navigate("/api-error", { replace: true })
       console.log(err)
     } finally {
       setAllLocationLoading(true)
@@ -50,11 +48,10 @@ export const FetchDataProvider = ({ children }) => {
   return (
     <FetchDataContext.Provider
       value={{
-        error404,
         isLocationLoading,
         allLocationLoading,
         locationData,
-        locationsData,
+        allLocationsData,
         fetchLocationById,
         fetchAllLocations,
       }}

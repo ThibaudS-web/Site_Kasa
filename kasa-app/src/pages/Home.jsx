@@ -6,25 +6,21 @@ import Loader from "../components/Loader"
 import { FetchDataContext } from "../utils/context/FetchDataProvider"
 
 function Home() {
-  const { fetchAllLocations, errorAPI, allLocationLoading, locationsData } =
+  const { fetchAllLocations, allLocationLoading, AllocationsData } =
     useContext(FetchDataContext)
 
   useEffect(() => {
     fetchAllLocations()
   }, [])
 
-  if (errorAPI) {
-    return (
-      <span>
-        Oups une erreur est survenue ... Veuillez recommencer ultérieurement.
-      </span>
-    )
-  }
-
   return (
     <>
       <Slogan />
-      {allLocationLoading ? <Gallery locations={locationsData} /> : <Loader />}
+      {allLocationLoading ? (
+        <Gallery locations={AllocationsData} />
+      ) : (
+        <Loader />
+      )}
     </>
   )
 }
