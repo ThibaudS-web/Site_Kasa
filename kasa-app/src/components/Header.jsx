@@ -51,9 +51,6 @@ function Header() {
   return (
     <HeaderWrapper>
       <KasaLogo
-        onClick={() => {
-          console.log(isMobile)
-        }}
         src={Logo}
         alt="logo de kasa"
       />

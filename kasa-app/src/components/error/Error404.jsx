@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import ErrPicture from "../assets/code_error.png"
-import colors from "../utils/colors"
+import ErrPicture from "../../assets/code_error.png"
+import colors from "../../utils/colors"
 
 const ErrorWrapper = styled.div`
   display: flex;

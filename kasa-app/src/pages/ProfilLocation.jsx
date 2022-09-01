@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useContext } from "react"
 import styled from "styled-components"
-import { useParams, Navigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import colors from "../utils/colors"
 import Tag from "../components/Tag"
 import Slider from "../components/Slider"
@@ -122,7 +122,6 @@ const ResponsiveWrapper = styled.div`
     align-items: center;
   }
 `
-
 const CollapseSectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -141,38 +140,17 @@ const CollapseWrapper = styled.div`
 
 function ProfileLocation() {
   const { locId } = useParams()
-  const {
-    errorAPI,
-    error404,
-    locationData,
-    isLocationLoading,
-    fetchLocationById,
-  } = useContext(FetchDataContext)
-
-  console.log(locId)
+  console.log("URL ID : ", locId)
+  const { locationData, isLocationLoading, fetchLocationById } =
+    useContext(FetchDataContext)
 
   useEffect(() => {
-    console.log("je passe dans le useEffect")
+    console.log("Je passe dans le useEffect")
     fetchLocationById(locId)
   }, [locId])
-  
-  console.log(locationData)
-
-  if (errorAPI) {
-    return (
-      <span>
-        Oups une erreur est survenue ... Veuillez recommencer ultérieurement.
-      </span>
-    )
-  }
-
-  console.log("Error404 : ", error404)
-
-  if (error404 && Object.keys(locationData).length === 0) {
-    return <Navigate to="/error404" />
-  }
 
   const rating = parseInt(locationData.rating)
+  console.log(locationData)
 
   return (
     <div>

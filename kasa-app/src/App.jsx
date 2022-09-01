@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import styled, { createGlobalStyle } from "styled-components"
 
@@ -8,11 +8,10 @@ import ProfileLocation from "./pages/ProfilLocation"
 
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import Error from "./components/Error"
+import Error404 from "./components/error/Error404"
+import ErrorAPI from "./components/error/ErrorAPI"
 
 import { FetchDataProvider } from "./utils/context/FetchDataProvider"
-
-// import fetchLocationData from "./services/localFetch"
 
 const GlobalStyle = createGlobalStyle`
     div, p {
@@ -49,7 +48,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/apartment/:locId" element={<ProfileLocation />} />
-            <Route path="*" element={<Error />} />
+            <Route path="/api-error" element={<ErrorAPI />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </FetchDataProvider>
       </BlocPage>
