@@ -17,31 +17,27 @@ export const FetchDataProvider = ({ children }) => {
       const response = await fetchLocationData.getLocById(locId)
       if (response) {
         setLocationData(response)
+        setIsLocationLoading(true)
       } else {
         navigate("/error404", { replace: true })
       }
     } catch (err) {
       navigate("/api-error", { replace: true })
-    } finally {
-      console.log("Finally")
-      setIsLocationLoading(true)
     }
   }
 
   async function fetchAllLocations() {
-    setIsLocationLoading(false)
     try {
       const response = await fetchLocationData.getAll()
       if (response) {
         setAllLocationsData(response)
+        setAllLocationLoading(true)
       } else {
         navigate("/error404", { replace: true })
       }
     } catch (err) {
       navigate("/api-error", { replace: true })
       console.log(err)
-    } finally {
-      setAllLocationLoading(true)
     }
   }
 
@@ -49,6 +45,7 @@ export const FetchDataProvider = ({ children }) => {
     <FetchDataContext.Provider
       value={{
         isLocationLoading,
+        setIsLocationLoading,
         allLocationLoading,
         locationData,
         allLocationsData,
