@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react"
-import styled, { css, keyframes } from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { Link } from "react-router-dom"
 
 const cardAnimation = keyframes`

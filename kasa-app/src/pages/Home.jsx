@@ -6,7 +6,7 @@ import Loader from "../components/Loader"
 import { FetchDataContext } from "../utils/context/FetchDataProvider"
 
 function Home() {
-  const { fetchAllLocations, allLocationLoading, AllocationsData } =
+  const { fetchAllLocations, allLocationLoading, allLocationsData } =
     useContext(FetchDataContext)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Home() {
     <>
       <Slogan />
       {allLocationLoading ? (
-        <Gallery locations={AllocationsData} />
+        <Gallery locations={allLocationsData} />
       ) : (
         <Loader />
       )}

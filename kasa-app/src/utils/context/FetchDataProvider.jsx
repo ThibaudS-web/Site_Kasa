@@ -8,7 +8,7 @@ export const FetchDataProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const [locationData, setLocationData] = useState({})
-  const [allLocationsData, setLocationsData] = useState([])
+  const [allLocationsData, setAllLocationsData] = useState([])
   const [allLocationLoading, setAllLocationLoading] = useState(false)
   const [isLocationLoading, setIsLocationLoading] = useState(false)
 
@@ -33,7 +33,7 @@ export const FetchDataProvider = ({ children }) => {
     try {
       const response = await fetchLocationData.getAll()
       if (response) {
-        setLocationsData(response)
+        setAllLocationsData(response)
       } else {
         navigate("/error404", { replace: true })
       }
