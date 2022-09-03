@@ -140,7 +140,7 @@ const CollapseWrapper = styled.div`
 
 function ProfileLocation() {
   const { locId } = useParams()
-  console.log("URL ID : ", locId)
+
   const {
     locationData,
     isLocationLoading,
@@ -148,11 +148,10 @@ function ProfileLocation() {
     fetchLocationById,
   } = useContext(FetchDataContext)
 
+  // return setIsLocationLoading on dismount component
   useEffect(() => {
-    console.log("component mounted")
     fetchLocationById(locId)
     return () => {
-      console.log("component will unmount")
       setIsLocationLoading(false)
     }
   }, [locId])

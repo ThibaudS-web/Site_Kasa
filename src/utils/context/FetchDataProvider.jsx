@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable react/prop-types */
 import React, { useState, createContext } from "react"
-import fetchLocationData from "../../services/localFetch"
 import { useNavigate } from "react-router-dom"
+import fetchLocationData from "../../services/localFetch"
 
 export const FetchDataContext = createContext()
 
-export const FetchDataProvider = ({ children }) => {
+export function FetchDataProvider({ children }) {
   const navigate = useNavigate()
 
   const [locationData, setLocationData] = useState({})
@@ -23,6 +25,7 @@ export const FetchDataProvider = ({ children }) => {
       }
     } catch (err) {
       navigate("/api-error", { replace: true })
+      console.log(err)
     }
   }
 
@@ -41,18 +44,18 @@ export const FetchDataProvider = ({ children }) => {
     }
   }
 
+  const sharedLocationData = {
+    isLocationLoading,
+    setIsLocationLoading,
+    allLocationLoading,
+    locationData,
+    allLocationsData,
+    fetchLocationById,
+    fetchAllLocations,
+  }
+
   return (
-    <FetchDataContext.Provider
-      value={{
-        isLocationLoading,
-        setIsLocationLoading,
-        allLocationLoading,
-        locationData,
-        allLocationsData,
-        fetchLocationById,
-        fetchAllLocations,
-      }}
-    >
+    <FetchDataContext.Provider value={sharedLocationData}>
       {children}
     </FetchDataContext.Provider>
   )

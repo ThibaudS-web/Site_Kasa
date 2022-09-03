@@ -50,10 +50,7 @@ function Header() {
 
   return (
     <HeaderWrapper>
-      <KasaLogo
-        src={Logo}
-        alt="logo de kasa"
-      />
+      <KasaLogo src={Logo} alt="logo de kasa" />
       <Navigation>
         <NavLink style={linkStyle} to="/">
           Accueil
