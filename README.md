@@ -16,7 +16,7 @@ Kasa, a housing rental site
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation and launching the application
 
 In the project directory, you must run:
 
