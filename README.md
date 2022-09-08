@@ -1,4 +1,4 @@
-[kasa_presentation](https://github.com/ThibaudS-web/Site_Kasa/blob/main/public/screenshot/kasa_readme.png)
+<img src='https://github.com/ThibaudS-web/Site_Kasa/blob/main/public/screenshot/kasa_readme.png' alt="screenshot"/>
 
 # Getting Started with Create React App
 
