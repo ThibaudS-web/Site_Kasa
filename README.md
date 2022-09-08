@@ -1,3 +1,5 @@
+[kasa_presentation](https://github.com/ThibaudS-web/Site_Kasa/blob/main/public/screenshot/kasa_readme.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
