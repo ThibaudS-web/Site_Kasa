@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useContext } from "react"
 import styled from "styled-components"
@@ -155,7 +156,6 @@ function ProfileLocation() {
       setIsLocationLoading(false)
     }
   }, [locId])
-
   const rating = parseInt(locationData.rating)
 
   return (
@@ -169,7 +169,6 @@ function ProfileLocation() {
               <Geolocation>{locationData.location}</Geolocation>
               <TagsWrapper>
                 {locationData.tags.map((tag, index) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <Tag key={`${tag}-${index}`} label={tag} />
                 ))}
               </TagsWrapper>

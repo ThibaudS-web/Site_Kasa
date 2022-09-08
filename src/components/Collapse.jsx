@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react"
 import styled from "styled-components"
@@ -88,7 +89,6 @@ function Collapse({ label, contentText, contentType, pageType }) {
         {contentType === "paragraph"
           ? contentText
           : contentText.map((item, index) => (
-              // eslint-disable-next-line react/no-array-index-key
               <li key={`${index}-${item}`}>{item}</li>
             ))}
       </Content>
