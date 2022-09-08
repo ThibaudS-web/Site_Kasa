@@ -156,6 +156,7 @@ function ProfileLocation() {
       setIsLocationLoading(false)
     }
   }, [locId])
+
   const rating = parseInt(locationData.rating)
 
   return (
