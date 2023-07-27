@@ -1,4 +1,4 @@
-# Présentation
+# Presentation
 
 https://user-images.githubusercontent.com/66798720/189151977-a6e53bdd-9da2-4c81-b79b-7947df26965a.mp4
 
@@ -16,9 +16,9 @@ Kasa, a housing rental site
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation and launching the application
 
-In the project directory, you can run:
+In the project directory, you must run:
 
 ### `npm install`
 ### `npm start`
